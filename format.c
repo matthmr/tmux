@@ -34,6 +34,8 @@
 
 #include "tmux.h"
 
+#define FORMAT_CMD_INTERVAL (60) // min
+
 /*
  * Build a list of key-value pairs and use them to expand #{key} entries in a
  * string.
@@ -392,7 +394,7 @@ format_job_get(struct format_expand_state *es, const char *cmd)
 	t = time(NULL);
 	if (force && fj->job != NULL)
 	       job_free(fj->job);
-	if (force || (fj->job == NULL && fj->last != t)) {
+	if (force || (fj->job == NULL && t >= (fj->last + FORMAT_CMD_INTERVAL))) {
 		fj->job = job_run(expanded, 0, NULL, NULL, NULL,
 		    server_client_get_cwd(ft->client, NULL), format_job_update,
 		    format_job_complete, NULL, fj, JOB_NOWAIT, -1, -1);

@@ -6,6 +6,12 @@ screen and continue running in the background, then later reattached.
 
 This release runs on OpenBSD, FreeBSD, NetBSD, Linux, macOS and Solaris.
 
+* NOTE
+
+This is the mH fork of tmux. My changes are mostly for my use-case only. Try to
+diff the lastest tag starting with `mh-` against theirs to see what the
+differences are.
+
 * Dependencies
 
 tmux depends on libevent 2.x, available from:

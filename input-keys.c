@@ -113,7 +113,7 @@ static struct input_key_entry input_key_defaults[] = {
 	  .data = "\033[5~"
 	},
 	{ .key = KEYC_BTAB,
-	  .data = "\033[Z"
+	  .data = "\033\011"
 	},
 
 	/* Arrow keys. */

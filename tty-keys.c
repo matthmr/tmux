@@ -1556,6 +1556,7 @@ tty_keys_colours(struct tty *tty, const char *buf, size_t len, size_t *size)
 		tty->fg = n;
 	} else if (n != -1) {
 		log_debug("%s: background is %s", c->name, colour_tostring(n));
+		environ_set(global_environ, "BG", ENVIRON_HIDDEN, "%x", n & 0xffffff);
 		tty->bg = n;
 	}
 

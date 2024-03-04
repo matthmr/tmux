@@ -316,6 +316,10 @@ cmd_new_session_exec(struct cmd *self, struct cmdq_item *item)
 	}
 	notify_session("session-created", s);
 
+	if (!detached && !already_attached) {
+		notify_client("client-attached", c);
+	}
+
 	/*
 	 * Set the client to the new session. If a command client exists, it is
 	 * taking this session and needs to get MSG_READY and stay around.
